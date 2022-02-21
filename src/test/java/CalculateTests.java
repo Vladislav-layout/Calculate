@@ -2,6 +2,7 @@ import calculate.Calculate;
 import org.junit.Assert;
 import org.junit.Test;
 
+
 public class CalculateTests {
     @Test
     public void testAdditionNum1AndNum2(){
@@ -27,5 +28,13 @@ public class CalculateTests {
     public void testDivisionToZero(){
         Calculate calculate = new Calculate(5.25, 0, '/');
         Assert.assertEquals("Делить на 0 нельзя!", 0, calculate.getNum2(),0);
+    }
+    @Test
+    public void testUncorrectValueForSign(){
+        Calculate calculate = new Calculate(5, 5, 's');
+        Assert.assertNotEquals("Некорректный ввод данных.", '+', calculate.getSign());
+        Assert.assertNotEquals("Некорректный ввод данных.", '-', calculate.getSign());
+        Assert.assertNotEquals("Некорректный ввод данных.", '/', calculate.getSign());
+        Assert.assertNotEquals("Некорректный ввод данных.", '*', calculate.getSign());
     }
 }
